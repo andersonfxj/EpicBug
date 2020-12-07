@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "201279298715",
+    "project_id": "epic-bug",
+    "storage_bucket": "epic-bug.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201279298715:android:7eac06584db93c8aa43a3e",
+        "android_client_info": {
+          "package_name": "com.anderson.epicbug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201279298715-5ei1usu81rs8c54a86ibn1unq1v6mibh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anderson.epicbug",
+            "certificate_hash": "002fdd1f036e1ace27aa3929615d7b9848e38785"
+          }
+        },
+        {
+          "client_id": "201279298715-btf2tucuicfi069hdb9vqcsoqirtlrm4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsYW2kG6NSTo_SSgD-ENwbJNpH9MdlaVg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201279298715-btf2tucuicfi069hdb9vqcsoqirtlrm4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
