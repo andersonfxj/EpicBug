@@ -31,7 +31,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
     private ArrayList<Jogo> listaJogo;
 
     public GameAdapter(Context c, ArrayList<Jogo> l){
-        context = context;
+        context = c;
         listaJogo = new ArrayList<Jogo>(l);
     }
 
@@ -53,7 +53,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaJogo.size();
     }
 
     public class GameViewHolder extends RecyclerView.ViewHolder{
