@@ -11,7 +11,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".CadastroActivity">
+    tools:context=".activity.CadastroActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -25,7 +25,7 @@
         app:srcCompat="@drawable/logo_epic_bug" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editnomecadastro"
         android:layout_width="326dp"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editemailcadastro"
         android:layout_width="323dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -81,10 +81,10 @@
         android:text="E-mail"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editnomecadastro" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editsenhacadastro"
         android:layout_width="325dp"
         android:layout_height="53dp"
         android:layout_marginTop="4dp"
@@ -104,10 +104,10 @@
         android:text="Senha"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/editemailcadastro" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/editconfirmsenha"
         android:layout_width="326dp"
         android:layout_height="45dp"
         android:layout_marginTop="4dp"
@@ -126,25 +126,29 @@
         android:text="Confirme sua senha"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editsenhacadastro" />
 
 
     <Button
+        android:id="@+id/btnCadastrarCad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="92dp"
+        android:onClick="validarUsuario"
         android:text="CADASTRAR"
         app:layout_constraintEnd_toStartOf="@+id/guideline7"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/editconfirmsenha" />
 
     <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="571dp" />
+        android:id="@+id/checkBoxTermo"
+        android:layout_width="292dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="28dp"
+        android:text="aceito os termos do Acordo de Assinatura do EpicBug e da Política de Privacidade da Valve."
+        app:layout_constraintStart_toStartOf="@+id/guideline6"
+        app:layout_constraintTop_toBottomOf="@+id/editconfirmsenha" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

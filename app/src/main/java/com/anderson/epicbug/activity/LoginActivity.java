@@ -1,10 +1,12 @@
-package com.anderson.epicbug;
+package com.anderson.epicbug.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.anderson.epicbug.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -17,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void AbrirTelaCadastro(View view){
-        Intent intent = new Intent(LoginActivity.this,CadastroActivity.class);
+        Intent intent = new Intent(LoginActivity.this, CadastroActivity.class);
         startActivity(intent);
     }
 }
