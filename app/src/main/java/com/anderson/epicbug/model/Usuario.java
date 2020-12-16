@@ -1,6 +1,7 @@
 package com.anderson.epicbug.model;
 
 public class Usuario {
+    private String id;
     private String nomeCadastro;
     private String emailCadastro;
     private String senhaCadastro;
@@ -8,6 +9,23 @@ public class Usuario {
 
     public Usuario(){
 
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nomeCadastro='" + nomeCadastro + '\'' +
+                ", emailCadastro='" + emailCadastro + '\'' +
+                ", senhaCadastro='" + senhaCadastro + '\'' +
+                '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Usuario(String nomeCadastro, String emailCadastro, String senhaCadastro) {

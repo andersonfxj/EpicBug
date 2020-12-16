@@ -17,13 +17,13 @@
         android:layout_marginEnd="25dp"
         android:text="E-mail"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/EmailLogin"
+        app:layout_constraintEnd_toEndOf="@+id/editEmailLogin"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/EmailLogin"
+        android:id="@+id/editEmailLogin"
         android:layout_width="330dp"
         android:layout_height="57dp"
         android:layout_marginTop="8dp"
@@ -67,13 +67,13 @@
         android:layout_marginEnd="25dp"
         android:text="Senha"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/SenhaLogin"
+        app:layout_constraintEnd_toEndOf="@+id/editSenhaLogin"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/EmailLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/editEmailLogin" />
 
     <EditText
-        android:id="@+id/SenhaLogin"
+        android:id="@+id/editSenhaLogin"
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:layout_marginTop="6dp"
@@ -92,15 +92,15 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toBottomOf="@+id/SenhaLogin">
+        app:layout_constraintTop_toBottomOf="@+id/editSenhaLogin">
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Login"
-             />
+            android:onClick="LogarUsuario"
+            android:text="Login" />
 
         <Button
             android:id="@+id/btnCadastro"

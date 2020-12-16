@@ -32,7 +32,7 @@ public class ConfiguracaoFirebase {
         return auth;
     }
 
-    /* Video 15 - Método para realizar o login*/
+    /*Método para realizar o login*/
     public static void signWithEmailAndPassword(Context context, String email, String senha,
                                                 OnCompleteListener<AuthResult> listener){
         getFirebaseAuth();
@@ -42,9 +42,6 @@ public class ConfiguracaoFirebase {
             Toast.makeText(context,"Preencha os campos necessários!",Toast.LENGTH_SHORT).show();
         }
     }
-
-
-    /* Video 15*/
 
     public static void verifyLoginException(Context context, Task<AuthResult> task){
         String excecao = "";
@@ -57,7 +54,7 @@ public class ConfiguracaoFirebase {
         }catch(FirebaseAuthUserCollisionException e){
             excecao = "Esta conta já foi cadastrada";
         }catch(Exception e){
-            excecao = "Erro ao cadastrar usuário "+e.getMessage();
+            excecao = "Erro "+e.getMessage();
             e.printStackTrace();
         }finally {
             Toast.makeText(context,excecao,Toast.LENGTH_SHORT).show();

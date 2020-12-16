@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -21,8 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private EditText editnomecadastro, editemailcadastro, editsenhacadastro,
-            editconfirmsenha;
+    private EditText editnomecadastro, editemailcadastro, editsenhacadastro;
     //private CheckBox checkBoxTermo;
     private FirebaseAuth auth;
 
@@ -30,12 +30,11 @@ public class CadastroActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
-        //DatabaseReference reference ConfiguracaoFirebase.getFirebaseDatabase
 
         editnomecadastro = findViewById(R.id.editnomecadastro);
-        editemailcadastro = findViewById(R.id.editnomecadastro);
-        editsenhacadastro = findViewById(R.id.editnomecadastro);
-        editconfirmsenha = findViewById(R.id.editconfirmsenha);
+        editemailcadastro = findViewById(R.id.editemailcadastro);
+        editsenhacadastro = findViewById(R.id.editsenhacadastro);
+
         //checkBoxTermo = findViewById(R.id.checkBoxTermo);
         auth = ConfiguracaoFirebase.getFirebaseAuth();
 
@@ -55,24 +54,38 @@ public class CadastroActivity extends AppCompatActivity {
         });
     }*/
 
-    public void cadastrarUsuario(Usuario usuario) {
+    public void cadastrarUsuario(final Usuario usuario) {
+        Log.d("USUARIO",usuario.toString());
         auth.createUserWithEmailAndPassword(usuario.getEmailCadastro(), usuario.getSenhaCadastro())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Sucesso ao cadastrar Usuario!", Toast.LENGTH_SHORT).show();
+                            criarUsuarioDatabase(usuario);
                             finish();
+                        }else{
+                            ConfiguracaoFirebase.verifyLoginException(getApplicationContext(),task);
                         }
                     }
                 });
     }
+    public void criarUsuarioDatabase(Usuario usuario){
+        DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebaseDatabase().child("usuarios");
+
+        //criar um nó dentro de usuarios
+        DatabaseReference refupload = databaseReference.push();
+        usuario.setId(refupload.getKey());
+        //Salvando no dataBase
+        refupload.setValue(usuario);
+
+    }
+
 
     public void validarUsuario(View v) {
         String nome = editnomecadastro.getText().toString();
         String email = editemailcadastro.getText().toString();
         String senha = editsenhacadastro.getText().toString();
-
 
         if (!nome.isEmpty()) {//verificando o nome
             if (!email.isEmpty()) {//verificando email
