@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "201279298715",
+    "firebase_url": "https://epic-bug-default-rtdb.firebaseio.com",
     "project_id": "epic-bug",
     "storage_bucket": "epic-bug.appspot.com"
   },
