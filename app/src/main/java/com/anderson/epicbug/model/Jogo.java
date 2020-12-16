@@ -11,6 +11,8 @@ public class Jogo {
     public Jogo(){
     }
 
+
+
     //Getters and setters
 
     public String getId() {

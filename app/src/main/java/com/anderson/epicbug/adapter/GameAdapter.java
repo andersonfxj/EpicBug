@@ -32,7 +32,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
     public GameAdapter(Context c, ArrayList<Jogo> l){
         context = c;
-        listaJogo = new ArrayList<Jogo>(l);
+        listaJogo = l;
     }
 
     @NonNull

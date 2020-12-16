@@ -29,9 +29,11 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.Format;
+
 public class JogosActivity extends AppCompatActivity {
-    private EditText editNome;
-    private EditText editText;
+    private EditText editCadastroNome;
+    private EditText editCadastroPreco;
     private ImageView imageView;
     private Button btnSelecionar, btnUpload;
     private StorageReference storageReference;
@@ -46,12 +48,13 @@ public class JogosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogos);
         imageView = findViewById(R.id.imageCadastro);
-        editNome = findViewById(R.id.editCadastroNome);
+        editCadastroNome = findViewById(R.id.editCadastroNome);
+        editCadastroPreco = findViewById(R.id.editCadastroPreco);
         btnSelecionar = findViewById(R.id.btnSelecionar);
         btnUpload =findViewById(R.id.btnCadastrar);
         if(auth.getCurrentUser()==null){
             //Fazer o login com usuario admin
-            auth.signInWithEmailAndPassword("oriel@gmail.com","36457486o")
+            auth.signInWithEmailAndPassword("cardoso@gmail.com","9664578943")
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -111,11 +114,19 @@ public class JogosActivity extends AppCompatActivity {
                     public void onSuccess(Uri uri) {
                         // Log.i("URI",uri.toString());
 
+
+
+
+
+
+
                         adicionaNoUriDatabase(uri);
 
 
                     }
                 });
+
+
 
             }
         });
@@ -125,13 +136,18 @@ public class JogosActivity extends AppCompatActivity {
 
     public   void adicionaNoUriDatabase(Uri uri){
 
-        String nome = editNome.getText().toString();
-        Jogo upload = new Jogo("1",uri.toString(),nome,10.0);
+        String nome = editCadastroNome.getText().toString();
+        String preco = editCadastroPreco.getText().toString();
+
+
+        Jogo upload = new Jogo("1",uri.toString(),nome, Double.parseDouble(preco));
+
 
         DatabaseReference refUpload = databaseReference.push();
         upload.setId(refUpload.getKey());
         //salvando no database
         refUpload.setValue(upload);
+
 
 
     }

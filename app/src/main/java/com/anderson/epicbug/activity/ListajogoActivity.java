@@ -1,16 +1,27 @@
 package com.anderson.epicbug.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.anderson.epicbug.JogosActivity;
 import com.anderson.epicbug.R;
 import com.anderson.epicbug.adapter.GameAdapter;
 import com.anderson.epicbug.model.Jogo;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -18,27 +29,34 @@ public class ListajogoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private GameAdapter gameAdapter;
     private ArrayList<Jogo> listaJogo = new ArrayList<Jogo>();
-
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listajogo);
+        databaseReference = FirebaseDatabase.getInstance().getReference("jogos");
 
-        getData();
 
         //Instanciando o adapter game
         gameAdapter = new GameAdapter(getApplicationContext(), listaJogo);
-
+        getData();
         //Configurando a Recycler View
-        recyclerView = findViewById(R.id.recyclerViewJogo);
+        recyclerView = findViewById(R.id.recyclerJogo);
         recyclerView.setHasFixedSize(true);
 
         LinearLayoutManager manager = new LinearLayoutManager(this);
         //DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(), manager.getOrientation());
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(gameAdapter);
-
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_Add);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), JogosActivity.class);
+                startActivity(intent);
+            }
+        });
         //recyclerView.addItemDecoration(dividerItemDecoration);
 
 
@@ -48,26 +66,26 @@ public class ListajogoActivity extends AppCompatActivity {
     public void getData(){
         //Preencher o lista de jogos, com dados -> ESTÀTICOS
 
-        Jogo jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-         jogo = new Jogo("1","https://jovemnerd.com.br/wp-content/uploads/wd-ps3.jpg","FarCry",30.0);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
-        listaJogo.add(jogo);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listaJogo.clear();
+                for (DataSnapshot no_filho : snapshot.getChildren()) {
+                    Jogo jogo = no_filho.getValue(Jogo.class);
+                    listaJogo.add(jogo);
+                }
+                //avisando o adapter que os dados mudaram
+                   gameAdapter.notifyDataSetChanged();
+                    Toast.makeText(getApplicationContext(),"CARREGOU DADOS!",Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getApplicationContext(),"Erro ao carregar lista",Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
+
 
 }
