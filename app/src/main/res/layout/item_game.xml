@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#2196F3">
+    android:layout_height="200dp"
+    android:background="#1987DF">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imagemUri"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="36dp"
-        android:text="Counter Strike"
+        android:text="   gdfhfdgdhdfh     "
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toEndOf="@+id/imagemUri"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,14 +37,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="R$ 50,99"
+        android:text="R$ 100 "
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="@+id/nomeJogo"
         app:layout_constraintTop_toBottomOf="@+id/nomeJogo" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="2dp"
+        android:layout_width="500dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="12dp"
         android:background="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,10 +53,10 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RatingBar
-        android:id="@+id/ratingBar"
+        android:id="@+id/estrelas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFEB3B"
+        android:background="#2196F3"
         android:backgroundTintMode="add"
         android:clickable="false"
         android:progressTint="#FFEB3B"

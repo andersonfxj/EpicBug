@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -30,6 +31,7 @@ public class ListajogoActivity extends AppCompatActivity {
     private GameAdapter gameAdapter;
     private ArrayList<Jogo> listaJogo = new ArrayList<Jogo>();
     private DatabaseReference databaseReference;
+    private GameAdapter.OnRatingBarChangeListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,18 @@ public class ListajogoActivity extends AppCompatActivity {
         });
         //recyclerView.addItemDecoration(dividerItemDecoration);
 
+        gameAdapter.setOnRatingBarChangeListener(new GameAdapter.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(int position, float estrelas) {
+
+
+               Toast.makeText(getApplicationContext(),"POSICAO: "+ position+ " ESTRELAS: "+estrelas,Toast.LENGTH_SHORT).show();
+
+                //ALTERAR OS DADOS NO FIREBASE
+
+
+            }
+        });
 
     }
 
@@ -70,8 +84,8 @@ public class ListajogoActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 listaJogo.clear();
-                for (DataSnapshot no_filho : snapshot.getChildren()) {
-                    Jogo jogo = no_filho.getValue(Jogo.class);
+                for (DataSnapshot no_children : snapshot.getChildren()) {
+                    Jogo jogo = no_children.getValue(Jogo.class);
                     listaJogo.add(jogo);
                 }
                 //avisando o adapter que os dados mudaram
