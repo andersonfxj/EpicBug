@@ -20,6 +20,11 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
+// PARTE ANDERSON MOREIRA
+// PARTE ANDERSON MOREIRA
+// PARTE ANDERSON MOREIRA
+
+
 public class CadastroActivity extends AppCompatActivity {
 
     private EditText editnomecadastro, editemailcadastro, editsenhacadastro;

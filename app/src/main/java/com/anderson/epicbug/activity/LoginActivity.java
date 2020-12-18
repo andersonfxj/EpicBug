@@ -15,6 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+// PARTE ANDERSON MOREIRA
+// PARTE ANDERSON MOREIRA
+// PARTE ANDERSON MOREIRA
+
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,7 +33,10 @@ public class LoginActivity extends AppCompatActivity {
         editEmailLogin = findViewById(R.id.editEmailLogin);
         getEditSenhaLogin = findViewById(R.id.editSenhaLogin);
 
-        ConfiguracaoFirebase.getFirebaseAuth().signOut();
+        ///ConfiguracaoFirebase.getFirebaseAuth().signOut();
+        if(ConfiguracaoFirebase.getFirebaseAuth().getCurrentUser()!=null){
+            AbrirTelaPrincipal();
+        }
     }
 
     public void LogarUsuario(View view){

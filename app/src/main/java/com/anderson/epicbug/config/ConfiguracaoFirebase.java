@@ -13,7 +13,11 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ConfiguracaoFirebase {
+//Parte Anderson
+//Parte Anderson
+//Parte Anderson
+
+public class  ConfiguracaoFirebase {
     private static DatabaseReference database;
     private static FirebaseAuth auth;
     /*Referencia p/ o database */

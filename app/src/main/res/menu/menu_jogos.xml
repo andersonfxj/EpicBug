@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--PARTE GUILHERME-->
+    <!--PARTE GUILHERME-->
+    <item
+        android:id="@+id/action_jogos"
+        android:icon="@drawable/ic_games_black_24dp"
+        android:title="Jogos"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/sair"
+        android:title="Sair">
+
+    </item>
+</menu>
