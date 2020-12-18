@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.anderson.epicbug.JogosActivity;
@@ -25,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 
 public class ListajogoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
@@ -65,11 +67,15 @@ public class ListajogoActivity extends AppCompatActivity {
             @Override
             public void onRatingChanged(int position, float estrelas) {
 
-
                Toast.makeText(getApplicationContext(),"POSICAO: "+ position+ " ESTRELAS: "+estrelas,Toast.LENGTH_SHORT).show();
 
                 //ALTERAR OS DADOS NO FIREBASE
-
+                //selecionando o jogo
+                Jogo jogo = listaJogo.get(position);
+                //setando a qtd estrelas
+                jogo.setEstrelas(estrelas);
+                //carregar o jogo no firebase
+                databaseReference.child(jogo.getId()).setValue(jogo);
 
             }
         });

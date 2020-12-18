@@ -34,7 +34,6 @@ import java.text.Format;
 public class JogosActivity extends AppCompatActivity {
     private EditText editCadastroNome;
     private EditText editCadastroPreco;
-    private EditText editCadastroestrelas;
     private ImageView imageView;
     private Button btnSelecionar, btnUpload;
     private StorageReference storageReference;
@@ -51,6 +50,8 @@ public class JogosActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imageCadastro);
         editCadastroNome = findViewById(R.id.editCadastroNome);
         editCadastroPreco = findViewById(R.id.editCadastroPreco);
+
+
 
         btnSelecionar = findViewById(R.id.btnSelecionar);
         btnUpload =findViewById(R.id.btnCadastrar);
@@ -140,11 +141,11 @@ public class JogosActivity extends AppCompatActivity {
 
         String nome = editCadastroNome.getText().toString();
         String preco = editCadastroPreco.getText().toString();
-        String estrelas = editCadastroestrelas.getText().toString();
+        ;
 
 
 
-        Jogo upload = new Jogo("1",uri.toString(),nome, Double.parseDouble(preco),Double.parseDouble(estrelas));
+        Jogo upload = new Jogo("1",uri.toString(),nome, Double.parseDouble(preco),0);
 
 
         DatabaseReference refUpload = databaseReference.push();

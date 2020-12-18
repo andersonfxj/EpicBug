@@ -39,7 +39,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
 
     public void setOnRatingBarChangeListener(OnRatingBarChangeListener onRatingBarChangeListener) {
         this.listener = onRatingBarChangeListener;
-      
+
     }
 
     public GameAdapter(Context c, ArrayList<Jogo> l){
@@ -82,13 +82,13 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
             precoJogo = itemView.findViewById(R.id.precoJogo);
             ratingBar = itemView.findViewById(R.id.estrelas);
             ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-                @Override
-                public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                    int position = getAdapterPosition();
-                    if(b==true){
-                        listener.onRatingChanged(position,v);
+                    @Override
+                    public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                        int position = getAdapterPosition();
+                        if(b==true){
+                            listener.onRatingChanged(position,v);
+                        }
                     }
-                }
             });
 
         }
